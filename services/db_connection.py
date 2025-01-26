@@ -48,11 +48,12 @@ class DatabaseConnection:
         """Establecer la conexión a la base de datos."""
         if cls._client is None:
             try:
-                username = os.getenv('DB_USER')
-                password = os.getenv('PASSWORD')
-                uri = f"mongodb+srv://{username}:{password}@lawiki.eq6pp.mongodb.net/?retryWrites=true&w=majority&appName=laWiki"
-                cls._client = MongoClient(uri,server_api=ServerApi('1'))
-                cls._db = cls._client['la-wiki-v3']
+                uri = "mongodb+srv://omrcluster.p3thf.mongodb.net/?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority&appName=OMRcluster"
+                cls._client = MongoClient(uri,
+                     tls=True,
+                     tlsCertificateKeyFile='server-cert.pem',
+                     server_api=ServerApi('1'))
+                cls._db = cls._client['ormdb']
                 logger.info("Conexión establecida a la base de datos.")
             except errors.ConnectionFailure as e:
                 logger.error(f"Error de conexión a la base de datos: {e}")
