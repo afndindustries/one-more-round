@@ -20,5 +20,5 @@ app.add_middleware(
 async def get_test():
     return {
         "code": 200,
-        "detail": "Funciona el backend"
+        "detail": "Funcionamiento correcto del Backend"
     }
