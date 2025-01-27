@@ -60,12 +60,17 @@ export const APIProvider = ({ children }) => {
         ...extraEndpoints,
     });
 
+    const events = createEndpointMethods("events", {update: null});
+    const drinks = createEndpointMethods("drinks", {update: null});
+
     return (
         <APIContext.Provider
             value={{
                 setAuthToken: setAuthToken,
                 BASE_URL: BASE_URL,
                 apiMethods: apiMethods,
+                events: events,
+                drinks: drinks,
             }}
         >
             {children}
