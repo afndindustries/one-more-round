@@ -8,11 +8,11 @@ from db_connection import DatabaseConnection
 router = APIRouter()
 
 # Nombre del endpoint
-endpoint_name = "bebidas"
+endpoint_name = "drinks"
 version = "v1"
 
 @router.get(f"/{endpoint_name}", tags=["Bebidas CRUD Endpoints"], response_model=List[Drink])
-async def get_Bebidas(request: Request, hateoas: Optional[bool] = Query(None, description="Incluir enlaces HATEOAS"),
+async def get_drinks(request: Request, hateoas: Optional[bool] = Query(None, description="Incluir enlaces HATEOAS"),
                        fields: str = Query(None, description="Campos que se quieren mostrar"),
                        sort: str = Query(None, description="Campos por los que ordenar, separados por comas"),
                        offset: int = Query(default=0, description="Índice de inicio para los resultados de la paginación"),
@@ -37,14 +37,14 @@ async def get_Bebidas(request: Request, hateoas: Optional[bool] = Query(None, de
             for bebida in bebidas:
                 bebida["href"] = f"/api/{version}/{endpoint_name}/{bebida['_id']}"
         
-        return JSONResponse(content=bebida, status_code=200,
+        return JSONResponse(content=bebidas, status_code=200,
                             headers={"Content-Type": "application/json", "X-Total-Count": str(total_count)})
     
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error al buscar Bebidas+: {str(e)}")
 
 @router.get(f"/{endpoint_name}/{{id}}", tags=["Bebidas CRUD Endpoints"], response_model=Drink)
-async def get_usuario_by_id(request: Request, id: str = Path(description="ID del usuario"),
+async def get_drink_by_id(request: Request, id: str = Path(description="ID del usuario"),
                             fields: str = Query(None, description="Campos que se quieren mostrar")):
     """Obtener usuario por ID."""
     APIUtils.check_id(id)
@@ -64,7 +64,7 @@ async def get_usuario_by_id(request: Request, id: str = Path(description="ID del
         raise HTTPException(status_code=500, detail=f"Error al obtener el usuario: {str(e)}")
 
 @router.post(f"/{endpoint_name}", tags=["Bebidas CRUD Endpoints"], response_model=Drink)
-async def create_usuario(bebida: DrinkCreate, request: Request):
+async def create_drink(bebida: DrinkCreate, request: Request):
     """Crear una nueva bebida."""
     APIUtils.check_content_type_json(request)
 
@@ -80,7 +80,7 @@ async def create_usuario(bebida: DrinkCreate, request: Request):
 
 
 @router.delete(f"/{endpoint_name}/{{id}}", tags=["Bebidas CRUD Endpoints"])
-async def delete_usuario(id: str = Path(description="ID de la bebida")):
+async def delete_drink(id: str = Path(description="ID de la bebida")):
     """Eliminar una bebida por ID."""
     APIUtils.check_id(id)
 

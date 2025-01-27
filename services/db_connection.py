@@ -53,7 +53,7 @@ class DatabaseConnection:
                      tls=True,
                      tlsCertificateKeyFile='server-cert.pem',
                      server_api=ServerApi('1'))
-                cls._db = cls._client['ormdb']
+                cls._db = cls._client['omrdb']
                 logger.info("Conexión establecida a la base de datos.")
             except errors.ConnectionFailure as e:
                 logger.error(f"Error de conexión a la base de datos: {e}")

@@ -8,11 +8,11 @@ from db_connection import DatabaseConnection
 router = APIRouter()
 
 # Nombre del endpoint
-endpoint_name = "eventos"
+endpoint_name = "events"
 version = "v1"
 
 @router.get(f"/{endpoint_name}", tags=["Eventos CRUD Endpoints"], response_model=List[Event])
-async def get_eventos(request: Request, hateoas: Optional[bool] = Query(None, description="Incluir enlaces HATEOAS"),
+async def get_events(request: Request, hateoas: Optional[bool] = Query(None, description="Incluir enlaces HATEOAS"),
                        fields: str = Query(None, description="Campos que se quieren mostrar"),
                        sort: str = Query(None, description="Campos por los que ordenar, separados por comas"),
                        offset: int = Query(default=0, description="Índice de inicio para los resultados de la paginación"),
@@ -37,14 +37,14 @@ async def get_eventos(request: Request, hateoas: Optional[bool] = Query(None, de
             for evento in eventos:
                 evento["href"] = f"/api/{version}/{endpoint_name}/{evento['_id']}"
         
-        return JSONResponse(content=evento, status_code=200,
+        return JSONResponse(content=eventos, status_code=200,
                             headers={"Content-Type": "application/json", "X-Total-Count": str(total_count)})
     
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error al buscar Bebidas+: {str(e)}")
 
 @router.get(f"/{endpoint_name}/{{id}}", tags=["Eventos CRUD Endpoints"], response_model=Event)
-async def get_evento_by_id(request: Request, id: str = Path(description="ID del evento"),
+async def get_event_by_id(request: Request, id: str = Path(description="ID del evento"),
                             fields: str = Query(None, description="Campos que se quieren mostrar")):
     """Obtener evento por ID."""
     APIUtils.check_id(id)
@@ -64,7 +64,7 @@ async def get_evento_by_id(request: Request, id: str = Path(description="ID del 
         raise HTTPException(status_code=500, detail=f"Error al obtener el usuario: {str(e)}")
 
 @router.post(f"/{endpoint_name}", tags=["Eventos CRUD Endpoints"], response_model=Event)
-async def create_evento(evento: EventCreate, request: Request):
+async def create_event(evento: EventCreate, request: Request):
     """Crear un nuevo evento"""
     APIUtils.check_content_type_json(request)
 
@@ -80,7 +80,7 @@ async def create_evento(evento: EventCreate, request: Request):
 
 
 @router.delete(f"/{endpoint_name}/{{id}}", tags=["Eventos CRUD Endpoints"])
-async def delete_evento(id: str = Path(description="ID del evento")):
+async def delete_event(id: str = Path(description="ID del evento")):
     """Eliminar un evento por ID."""
     APIUtils.check_id(id)
 
