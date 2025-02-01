@@ -8,3 +8,4 @@ firebase-admin==6.6.0
 geopy==2.4.1
 cloudinary==1.41.0
 python-multipart
+pydantic[email]
