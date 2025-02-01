@@ -48,11 +48,8 @@ class DatabaseConnection:
         """Establecer la conexión a la base de datos."""
         if cls._client is None:
             try:
-                uri = "mongodb+srv://omrcluster.p3thf.mongodb.net/?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority&appName=OMRcluster"
-                cls._client = MongoClient(uri,
-                     tls=True,
-                     tlsCertificateKeyFile='server-cert.pem',
-                     server_api=ServerApi('1'))
+                uri = f"mongodb+srv://{os.getenv('USER')}:{os.getenv('PASSWD')}@omrcluster.p3thf.mongodb.net/?retryWrites=true&w=majority&appName=OMRcluster"                
+                cls._client = MongoClient(uri, server_api=ServerApi('1'))
                 cls._db = cls._client['omrdb']
                 logger.info("Conexión establecida a la base de datos.")
             except errors.ConnectionFailure as e:
