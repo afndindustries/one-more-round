@@ -6,9 +6,9 @@ from typing import Optional, Dict, List
 from fastapi import APIRouter, HTTPException, Query, Request, Path
 from fastapi.responses import JSONResponse
 
-from user_model import User, UserCreate, UserUpdate
-from db_connection import DatabaseConnection
-from api_utils import APIUtils
+from .user_model import User, UserCreate, UserUpdate
+from utils.db_connection import DatabaseConnection
+from utils.api_utils import APIUtils
 from fastapi import Path, HTTPException
 from fastapi.responses import JSONResponse
 

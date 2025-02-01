@@ -3,11 +3,11 @@ from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from contextlib import asynccontextmanager
-from db_connection import DatabaseConnection
+from utils.db_connection import DatabaseConnection
 
-from drink_v1 import router as drink_router
-from event_v1 import router as event_router
-from user_v1 import router as user_router
+from drink_service.drink_v1 import router as drink_router
+from event_service.event_v1 import router as event_router
+from user_service.user_v1 import router as user_router
 
 @asynccontextmanager
 async def lifespan(app):

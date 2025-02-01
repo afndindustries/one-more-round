@@ -1,9 +1,11 @@
 from typing import List, Optional
+
 from fastapi import APIRouter, HTTPException, Request, Path, Query
 from fastapi.responses import JSONResponse
-from drink_model import Drink, DrinkCreate, DrinkDeleteResponse
-from api_utils import APIUtils
-from db_connection import DatabaseConnection
+
+from .drink_model import Drink, DrinkCreate, DrinkDeleteResponse
+from utils.api_utils import APIUtils
+from utils.db_connection import DatabaseConnection
 
 router = APIRouter()
 

@@ -1,9 +1,11 @@
 from typing import List, Optional
+
 from fastapi import APIRouter, HTTPException, Request, Path, Query
 from fastapi.responses import JSONResponse
-from event_model import Event, EventCreate, EventDeleteResponse
-from api_utils import APIUtils
-from db_connection import DatabaseConnection
+
+from .event_model import Event, EventCreate, EventDeleteResponse
+from utils.api_utils import APIUtils
+from utils.db_connection import DatabaseConnection
 
 router = APIRouter()
 
