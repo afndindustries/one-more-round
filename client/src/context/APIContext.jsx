@@ -3,7 +3,7 @@ import axios from "axios";
 
 const APIContext = createContext();
 
-const BASE_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:7654';
+const BASE_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000';
 console.log('BASE_URL:', BASE_URL);
 
 export const APIProvider = ({ children }) => {
@@ -16,9 +16,10 @@ export const APIProvider = ({ children }) => {
             return newCount < 0 ? 0 : newCount;
         });
 
-    useEffect(() => {
-        // document.getElementById("loading-screen").style.display = loadCount === 0 ? "none" : "block";
-    }, [loadCount]);
+        
+    // useEffect(() => {
+    //     document.getElementById("loading-screen").style.display = loadCount === 0 ? "none" : "block";
+    // }, [loadCount]);
 
     const getAuthorizationHeader = () => authToken ? { Authorization: `Bearer ${authToken}` } : {};
 
@@ -62,6 +63,7 @@ export const APIProvider = ({ children }) => {
 
     const events = createEndpointMethods("events", {update: null});
     const drinks = createEndpointMethods("drinks", {update: null});
+    const users = createEndpointMethods("users");
 
     return (
         <APIContext.Provider
@@ -71,6 +73,7 @@ export const APIProvider = ({ children }) => {
                 apiMethods: apiMethods,
                 events: events,
                 drinks: drinks,
+                users: users,
             }}
         >
             {children}

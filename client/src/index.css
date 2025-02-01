@@ -1,3 +1,18 @@
 * {
     font-family: 'Gabarito', sans-serif;
 }
+
+.primary-btn{
+    background-color: #f8f9fa;
+    text-decoration: none;
+    color: #343a40;
+    border: 1px solid #428bcf;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.primary-btn:hover{
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}

@@ -7,12 +7,12 @@ const Header = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm border-bottom">
           <div className="container">
-            <span
+             <span
               className="navbar-brand text-dark display-4 mb-0 pb-0"
               onClick={() => navigate("/")}
               style={{ fontWeight: 'bold', cursor: "pointer" }}
             >
-              OneMoreRound
+              OneMoreRound 🌴🥥
             </span>
     
             <button
@@ -31,7 +31,7 @@ const Header = () => {
               <div className="ms-auto"></div>
     
               <button
-                className="btn btn-primary"
+                className="btn-outline-primary btn"
                 onClick={() => navigate("/login")}
               >
                 Iniciar sesión

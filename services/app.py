@@ -7,6 +7,7 @@ from db_connection import DatabaseConnection
 
 from drink_v1 import router as drink_router
 from event_v1 import router as event_router
+from user_v1 import router as user_router
 
 @asynccontextmanager
 async def lifespan(app):
@@ -39,6 +40,7 @@ app.add_middleware(
 
 app.include_router(drink_router, prefix="/api/v1")
 app.include_router(event_router, prefix="/api/v1")
+app.include_router(user_router, prefix="/api/v1")
 
 @app.get("/favicon.ico", include_in_schema=False)
 async def favicon():
