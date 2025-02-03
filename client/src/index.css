@@ -2,6 +2,17 @@
     font-family: 'Gabarito', sans-serif;
 }
 
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+}
+
+main{
+    flex: 1;
+}
+
 .primary-btn{
     background-color: #f8f9fa;
     text-decoration: none;

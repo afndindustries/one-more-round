@@ -10,7 +10,6 @@ import DrinksPage from '../drinks/DrinksPage';
 
 const App = () => {
     return (
-        <div style={{ backgroundColor: '#f8f9fa' }}>
             <Router>
                 <Routes>
                     <Route element={<FullPage />}>
@@ -22,7 +21,6 @@ const App = () => {
                     <Route path='/login' element={<LoginPage />} />
                 </Routes>
             </Router>
-        </div>
     );
 };
 

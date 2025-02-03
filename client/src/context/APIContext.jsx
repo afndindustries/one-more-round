@@ -3,7 +3,7 @@ import axios from "axios";
 
 const APIContext = createContext();
 
-const BASE_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000';
+const BASE_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:7654';
 console.log('BASE_URL:', BASE_URL);
 
 export const APIProvider = ({ children }) => {
