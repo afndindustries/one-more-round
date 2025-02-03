@@ -31,6 +31,8 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:5173",
         "https://one-more-round.vercel.app",
+        # adding this line by working on develop
+        "https://one-more-round-git-develop-afndindustries-projects.vercel.app/",
         "http://localhost"
     ],
     allow_credentials=True,
